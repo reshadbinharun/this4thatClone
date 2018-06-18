@@ -1,0 +1,35 @@
+<DOCTYPE HTML>
+<html>
+	<head>
+		<title>Wait, what does your startup do?</title>
+		<script>
+			function fetch(){
+				console.log("in fetch()");
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET", "/pair", true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+				xhr.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				    	var res = this.responseText;
+				    	var json = JSON.parse(res);
+				    	var t1 = json.t1;
+				    	var t2 = json.t2; 
+				    	document.getElementById("this").innerHTML = t1;
+
+				    	document.getElementById("that").innerHTML = t2;
+				     return false;
+				    }
+			    } 
+				xhr.send();
+			}
+		</script>	
+	</head>
+	<body onload="fetch(); return false;">
+		<div>Wait, what does your startup do? </div><br>
+		<div> So basically it's like a</div><br>
+		<div id="this" onclick="fetch(); return false;"></div>
+		<div> for </div>
+		<div id="that" onclick="fetch(); return false;"></div>
+		<button id="refresh" onclick="fetch(); return false;">Refresh</button>
+	</body>
+</html>
