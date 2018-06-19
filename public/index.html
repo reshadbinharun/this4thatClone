@@ -2,8 +2,16 @@
 <html>
 	<head>
 		<title>Wait, what does your startup do?</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Spirax|Shrikhand|Poppins|Eater|Indie Flower|Pacifico|Cookie|Heebo|Permanent Marker|Orbitron|Cabin Sketch|Sacramento|Caveat|Monoton|News Cycle">
 		<script>
 			function fetch(){
+				var fonts = ["Spirax","Shrikhand","Poppins","Eater","Indie Flower","Pacifico","Cookie","Heebo","Permanent Marker", "Orbitron",
+				"Cabin Sketch", "Sacramento", "Caveat", "Monoton", "News Cycle"];
+				var colors = ["red", "blue", "yellow","magenta", "brown", "green", "cyan", "purple"];
+				var ind1 = Math.floor(Math.random()*10*fonts.length)%fonts.length;
+				var ind2 = Math.floor(Math.random()*10*fonts.length)%fonts.length;
 				console.log("in fetch()");
 				var xhr = new XMLHttpRequest();
 				xhr.open("GET", "/pair", true);
@@ -15,21 +23,102 @@
 				    	var t1 = json.t1;
 				    	var t2 = json.t2; 
 				    	document.getElementById("this").innerHTML = t1;
+				    	document.getElementById("this").style.fontFamily = fonts[ind1];
+				    	document.getElementById("this").style.color = colors[ind1%colors.length];
 
 				    	document.getElementById("that").innerHTML = t2;
+				    	document.getElementById("that").style.fontFamily = fonts[ind2];
+				    	document.getElementById("that").style.color = colors[ind2%colors.length];
 				     return false;
 				    }
 			    } 
 				xhr.send();
 			}
-		</script>	
+		</script>
+		<style>
+		#body{
+		}
+		#twt{
+			float: right;
+			text-align: center;
+			width: 10%;
+    		border: 1px solid blue;
+    		padding: 5px;
+    		font-family: News Cycle;
+		}
+		#txt1{
+			margin: auto;
+			width: 100%;
+    		padding: 10px;
+    		text-align: center;
+    		font-family: News Cycle;
+    		font-size: 25px;
+		}
+		#txt2{
+			margin: auto;
+			width: 100%;
+    		padding: 10px;
+    		text-align: center;
+    		font-family: News Cycle;
+    		font-size: 35px;
+		}
+		#txt3{
+			float: right;
+			width: 50%;
+			position: relative;
+			top: 5px;
+			right: 100px;
+    		padding: 10px;
+    		text-align: center;
+    		font-family: News Cycle;
+		}
+		#for{
+			margin: auto;
+			width: 100%;
+    		padding: 10px;
+    		text-align: center;
+    		font-family: Cabin Sketch;
+    		font-size: 50px;
+		}
+		#this{
+			margin: auto;
+			width: 50%;
+    		padding: 10px;
+    		text-align: center;
+    		font-size: 75px;
+    		text-shadow: 2px 2px #D3D3D3;
+		}
+		#that{
+			margin: auto;
+			width: 50%;
+    		padding: 10px;
+    		text-align: center;
+    		font-size: 75px;
+    		text-shadow: 2px 2px #D3D3D3;
+		}
+		#refresh{
+			float: right;
+			width: 20%;
+    		padding: 10px;
+    		text-align: center;
+		}
+		#encapsule{
+			margin: auto;
+			width: 70%;
+    		border: 3px solid black;
+    		padding: 10px;
+    		text-align: center;
+		}
+		</style>	
 	</head>
 	<body onload="fetch(); return false;">
-		<div>Wait, what does your startup do? </div><br>
-		<div> So basically it's like a</div><br>
-		<div id="this" onclick="fetch(); return false;"></div>
-		<div> for </div>
-		<div id="that" onclick="fetch(); return false;"></div>
-		<button id="refresh" onclick="fetch(); return false;">Refresh</button>
+		<div id="twt"><a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fitsthisforthat.com%2F&ref_src=twsrc%5Etfw&text=Wait%2C%20what%20does%20your%20startup%20do%3F&tw_p=tweetbutton&url=http%3A%2F%2Fhttps://github.com/reshadbinharun/this4thatClone"> Tweet </a></div><br><br><br>
+		<div id="txt1">Wait, what does your startup do? </div><br>
+		<div id="txt2"> So basically it's like a</div><br>
+		<div id ="encapsule"><div id="this" onclick="fetch(); return false;"></div>
+		<div id="for"> for </div><br>
+		<div id="that" onclick="fetch(); return false;"></div><br><div>
+		<div><button id="refresh" onclick="fetch(); return false;">Refresh</button><div><br><br>
+		<div id="txt3">Follow the original creators on their Twitter <a href="http://twitter.com/erickerr">@erickerr</a> and <a href="http://twitter.com/gilbert">@gilbert</a></div>
 	</body>
 </html>
