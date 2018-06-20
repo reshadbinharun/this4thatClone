@@ -13,15 +13,12 @@ app.get('/', function (req, res) {
 });
 
 app.get('/pair', function(req, res){
-	console.log("route used!");
+	console.log("API Call made!");
 	var ind1 = Math.floor(Math.random()*10*thisText.length)%thisText.length;
 	var ind2 = Math.floor(Math.random()*10*thatText.length)%thatText.length;
 	var result = "{\"t1\":\""+thisText[ind1]+"\","+"\"t2\":\""+thatText[ind2]+"\"}";
 	result = JSON.parse(result);
-	console.log(result);
-	console.log(typeof(result));
 	console.log("Ind1 is " + ind1+" and ind2 is "+ ind2);
 	//option to send text
-	var resText = thisText[ind1] + "<br><p><div id=\"txt\"> for </div></p>"+thatText[ind2] +"<br>";
 	res.send(result);
 });
